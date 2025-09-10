@@ -15,6 +15,10 @@ class AppNavigator {
         _commands.value = null
     }
 
+    fun back(){
+        _commands.value = GoBack
+    }
+
     companion object {
         data object GoBack
     }
