@@ -1,22 +1,18 @@
 package com.worldview.myapplication.navigation
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
 
 
-class AppNavigator {
-    private val _commands = mutableStateOf<Any?>(null)
-    val commands: State<Any?> = _commands
-    fun navigate(command: Any) {
-        _commands.value = command
+class AppNavigator(startDestination: NavigationCommand) {
+    val backStack: SnapshotStateList<NavigationCommand> = mutableStateListOf(startDestination)
+
+    fun navigate(command: NavigationCommand) {
+        backStack.add(command)
     }
 
-    fun onCommandConsumed() {
-        _commands.value = null
-    }
-
-    companion object {
-        data object GoBack
+    fun back(){
+        backStack.removeLastOrNull()
     }
 }
 

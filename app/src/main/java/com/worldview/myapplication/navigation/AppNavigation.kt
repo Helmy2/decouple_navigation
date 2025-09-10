@@ -1,29 +1,18 @@
 package com.worldview.myapplication.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.ui.NavDisplay
 
 @Composable
 fun AppNavigation(
-    navController: NavHostController,
-    navigator: AppNavigator,
+    navController: SnapshotStateList<NavigationCommand>,
     navGraphInstallers: List<NavGraphInstaller>
 ) {
-    LaunchedEffect(navigator.commands.value) {
-        navigator.commands.value?.let { command ->
-            when (command) {
-                is AppNavigator.Companion.GoBack -> navController.popBackStack()
-                is NavigationCommand -> navController.navigate(command)
-            }
-            navigator.onCommandConsumed()
-        }
-    }
-    NavHost(navController = navController, startDestination = NavigationCommand.Home) {
+    NavDisplay(backStack = navController, entryProvider = entryProvider {
         navGraphInstallers.forEach { installer ->
             installer(this)
         }
-    }
+    })
 }

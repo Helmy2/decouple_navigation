@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Surface
-import androidx.navigation.compose.rememberNavController
 import com.worldview.myapplication.app.theme.MyApplicationTheme
 import com.worldview.myapplication.navigation.AppNavigation
 import com.worldview.myapplication.navigation.AppNavigator
@@ -21,11 +20,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
-                val navController = rememberNavController()
                 Surface {
                     AppNavigation(
-                        navController = navController,
-                        navigator = navigator,
+                        navController = navigator.backStack,
                         navGraphInstallers = navGraphInstallers
                     )
                 }

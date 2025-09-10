@@ -1,9 +1,9 @@
 package com.worldview.myapplication.features.home
 
-import androidx.navigation.compose.composable
+import androidx.navigation3.runtime.entry
 import com.worldview.myapplication.navigation.NavGraphInstaller
 import com.worldview.myapplication.navigation.NavigationCommand
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -12,10 +12,10 @@ val homeModule = module {
 
     single<NavGraphInstaller>(named("home"), createdAtStart = true) {
         {
-            composable<NavigationCommand.Home> {
+            entry<NavigationCommand.Home> {
                 HomeScreen()
             }
-            composable<NavigationCommand.Settings> {
+            entry<NavigationCommand.Settings> {
                 SettingsScreen()
             }
         }

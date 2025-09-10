@@ -1,5 +1,5 @@
 package com.worldview.myapplication.navigation
 
-import androidx.navigation.NavGraphBuilder
+import androidx.navigation3.runtime.EntryProviderBuilder
 
-typealias NavGraphInstaller = NavGraphBuilder.() -> Unit
+typealias NavGraphInstaller = EntryProviderBuilder<NavigationCommand>.() -> Unit
