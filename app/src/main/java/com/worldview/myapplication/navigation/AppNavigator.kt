@@ -35,7 +35,10 @@ class AppNavigator(startDestination: NavigationCommand) {
 
     fun navigate(command: NavigationCommand) {
         // Prevent adding duplicate destinations to the back stack
-        if (backStack.lastOrNull() != command) {
+        if (backStack.lastOrNull()?.javaClass != command.javaClass) {
+            backStack.add(command)
+        } else {
+            back()
             backStack.add(command)
         }
     }

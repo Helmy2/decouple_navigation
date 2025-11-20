@@ -53,7 +53,6 @@ dependencies {
     implementation(libs.androidx.compose.icons)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-    implementation(libs.koin.navigation3)
     implementation(libs.kotlinx.serialization.json)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -66,4 +65,6 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.viewmodel)
+    implementation(libs.androidx.navigation3.adaptive)
+    implementation(libs.androidx.compose.material3.adaptive.navigation.suite)
 }

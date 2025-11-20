@@ -1,10 +1,11 @@
 package com.worldview.myapplication.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed class NavigationCommand {
+sealed class NavigationCommand : NavKey {
     @Serializable
     data object Home : NavigationCommand()
 
