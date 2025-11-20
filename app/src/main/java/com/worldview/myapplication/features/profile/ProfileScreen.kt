@@ -11,16 +11,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ProfileScreen(userId: String, viewModel: ProfileViewModel = koinViewModel()) {
+fun ProfileScreen(
+    viewModel: ProfileViewModel
+) {
+    val state = viewModel.currentUserId.value
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Profile Screen for User: $userId")
+        Text("Profile Screen for User: $state")
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = { viewModel.onBackButtonClicked() }) {
             Text("Go Back")
