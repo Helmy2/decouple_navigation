@@ -28,6 +28,9 @@ fun ProfileScreen(
         Button(onClick = { viewModel.onBackButtonClicked() }) {
             Text("Go Back")
         }
+        Button(onClick = { viewModel.setResult(id) }) {
+            Text("Set Result")
+        }
     }
 }
 

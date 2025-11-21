@@ -23,9 +23,8 @@ import androidx.navigation3.ui.NavDisplay
 import com.worldview.myapplication.features.home.HomeScreen
 import com.worldview.myapplication.features.home.SettingsScreen
 import com.worldview.myapplication.features.profile.ProfileScreen
-import org.koin.core.annotation.KoinExperimentalAPI
 
-@OptIn(KoinExperimentalAPI::class, ExperimentalMaterial3AdaptiveApi::class)
+@OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun AppNavigation(
     navController: AppNavigator,
@@ -52,7 +51,7 @@ fun AppNavigation(
     NavigationSuiteScaffold(
         layoutType = navigationSuiteType,
         navigationSuiteItems = {
-            AppNavigator.TOP_LEVEL_ROUTES.forEach { topLevelRoute ->
+            TOP_LEVEL_ROUTES.forEach { topLevelRoute ->
                 val isSelected =
                     navController.isSelected(topLevelRoute.route)
                 item(
