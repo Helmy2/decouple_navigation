@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Surface
 import com.worldview.myapplication.app.theme.MyApplicationTheme
-import com.worldview.myapplication.navigation.AppNavigation
+import com.worldview.myapplication.navigation.AppLayout
 import com.worldview.myapplication.navigation.AppNavigator
 import org.koin.android.ext.android.inject
 
@@ -16,10 +16,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        navigator.attachToRegistry(this)
         setContent {
             MyApplicationTheme {
                 Surface {
-                    AppNavigation(
+                    AppLayout(
                         navController = navigator,
                     )
                 }

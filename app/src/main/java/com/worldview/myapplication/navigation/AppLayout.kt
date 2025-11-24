@@ -26,7 +26,7 @@ import com.worldview.myapplication.features.profile.ProfileScreen
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
-fun AppNavigation(
+fun AppLayout(
     navController: AppNavigator,
 ) {
     val windowAdaptiveInfo = currentWindowAdaptiveInfo()
@@ -47,17 +47,16 @@ fun AppNavigation(
     }
     val listDetailStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
 
-
     NavigationSuiteScaffold(
         layoutType = navigationSuiteType,
         navigationSuiteItems = {
             TOP_LEVEL_ROUTES.forEach { topLevelRoute ->
                 val isSelected =
-                    navController.isSelected(topLevelRoute.route)
+                    navController.isAtBottomOfStack(topLevelRoute.route)
                 item(
                     selected = isSelected,
                     onClick = {
-                        navController.addTopLevel(topLevelRoute.route)
+                        navController.navigateToTopLevel(topLevelRoute.route)
                     },
                     icon = {
                         Icon(
